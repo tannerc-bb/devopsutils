@@ -2,7 +2,15 @@
 $organization = "betenboughsystems"
 $project = "main"
 $releaseDefinitionId = "66"
-$pat = "YOUR_PERSONAL_ACCESS_TOKEN"
+$configPath = Join-Path $PSScriptRoot "config.json"
+
+if (Test-Path $configPath) {
+    $config = Get-Content $configPath | ConvertFrom-Json
+    $pat = $config.pat
+} else {
+    Write-Host "Error: config.json not found" -ForegroundColor Red
+    exit 1
+}
 
 # Create base64 encoded authorization header
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(":$($pat)"))

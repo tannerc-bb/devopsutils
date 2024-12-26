@@ -1,0 +1,19 @@
+# Configuration files with sensitive data
+config.json
+
+# Environment-specific configs (if we add them later)
+config.*.json
+
+# PowerShell logs and temp files
+*.log
+*.tmp
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.suo
+*.user 
