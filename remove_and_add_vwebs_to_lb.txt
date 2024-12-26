@@ -1,0 +1,11 @@
+# Remove VWEB6 from the load balancer.
+az network lb address-pool address remove -g LiveOperations-eastus2 --lb-name FTG_LoadBalancer --pool-name Pool2_Vweb -n vweb6 --verbose
+
+# Add it back.
+az network lb address-pool address add -g LiveOperations-eastus2 --lb-name FTG_LoadBalancer --pool-name Pool2_Vweb -n vweb6 --ip-address 10.128.0.4 --subnet /subscriptions/bf0f5d5c-f9e0-43de-86c4-bee26b617b1c/resourceGroups/LiveOperations/providers/Microsoft.Network/virtualNetworks/LiveOperations-vnet/subnets/default
+
+# Remove VWEB7 from the load balancer.
+az network lb address-pool address remove -g LiveOperations-eastus2 --lb-name FTG_LoadBalancer --pool-name Pool2_Vweb -n vweb7 --verbose
+
+# Add it back.
+ az network lb address-pool address add -g LiveOperations-eastus2 --lb-name FTG_LoadBalancer --pool-name Pool2_Vweb -n vweb7 --ip-address 10.128.0.8 --subnet /subscriptions/bf0f5d5c-f9e0-43de-86c4-bee26b617b1c/resourceGroups/LiveOperations/providers/Microsoft.Network/VirtualNetworks/LiveOperations-vnet/subnets/default
