@@ -16,8 +16,10 @@ Scripts for managing Azure Load Balancer and Release Pipeline configurations.
 ## Usage
 - `loadbalancer_manager.ps1`: Interactive menu for managing VMs in load balancer
 - `disable_pipeline_test.ps1`: Interactive menu for managing pipeline triggers
+- `training_site_refresh.ps1`: Interactive menu for managing training site refresh schedule
 
 ## Safety Features
 - Checks if pipeline is running before operations
 - Automatically disables pipeline when removing VMs from the load balancer
+- Ensures at least one VM is always in the load balancer
 - Re-enables pipeline when adding VMs back to the load balancer
