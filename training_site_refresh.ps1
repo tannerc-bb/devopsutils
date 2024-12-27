@@ -33,21 +33,21 @@ Write-Host "`nTraining Site Refresh Schedule Manager" -ForegroundColor Cyan
 Write-Host "--------------------------------" -ForegroundColor Cyan
 Write-Host "1: Disable Training Site Refresh Schedule"
 Write-Host "2: Enable Training Site Refresh Schedule"
-Write-Host "3: Quit"
+Write-Host "Q: Quit"
 Write-Host "--------------------------------`n" -ForegroundColor Cyan
 
-$choice = Read-Host "Enter your choice (1, 2, or 3)"
+$choice = Read-Host "Enter your choice (1, 2, or Q)"
 
 # Convert menu choice to action
-switch ($choice) {
+switch ($choice.ToLower()) {
     "1" { $Action = "disable" }
     "2" { $Action = "enable" }
-    "3" { 
+    "q" { 
         Write-Host "`nExiting script..." -ForegroundColor Yellow
         exit 0 
     }
     default {
-        Write-Host "`nInvalid choice. Please enter 1, 2, or 3." -ForegroundColor Red
+        Write-Host "`nInvalid choice. Please enter 1, 2, or Q." -ForegroundColor Red
         exit 1
     }
 }

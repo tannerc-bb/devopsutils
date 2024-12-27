@@ -130,6 +130,20 @@ function Check-ReleasePipelineStatus {
     }
 }
 
+function Get-LoadBalancerHosts {
+    try {
+        $hosts = az network lb address-pool address list `
+            -g $resourceGroup `
+            --lb-name $lbName `
+            --pool-name $poolName | ConvertFrom-Json
+        return $hosts
+    }
+    catch {
+        Write-Host "Error getting load balancer hosts: $_" -ForegroundColor Red
+        exit 1
+    }
+}
+
 function Remove-FromLoadBalancer {
     param (
         [string]$vmName
@@ -137,6 +151,13 @@ function Remove-FromLoadBalancer {
     
     $config = $vwebConfig[$vmName]
     Write-Host "Removing $($config.name) from load balancer..."
+    
+    # Check current hosts in load balancer
+    $currentHosts = Get-LoadBalancerHosts
+    if ($currentHosts.Count -le 1) {
+        Write-Host "Error: Cannot remove host. At least one host must remain in the load balancer at all times." -ForegroundColor Red
+        return
+    }
     
     Write-Host "Checking if release pipeline is running..." -ForegroundColor Yellow
     if (Check-ReleasePipelineStatus) {
