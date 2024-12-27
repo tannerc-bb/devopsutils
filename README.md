@@ -1,2 +1,22 @@
-# devopsutils
-Various DevOps related scripts and utilities that are handy to have
+# Load Balancer Management Scripts
+
+Scripts for managing Azure Load Balancer and Release Pipeline configurations.
+
+## Prerequisites
+- Azure CLI installed and logged in (`az login`)
+- PowerShell 5.1 or higher
+- Azure DevOps PAT with Release management permissions
+
+## Setup
+1. Copy `config.json.example` to `config.json`
+2. Add your Azure DevOps PAT to `config.json`
+3. Ensure `config.json` is in `.gitignore`
+
+## Usage
+- `loadbalancer_manager.ps1`: Interactive menu for managing VMs in load balancer
+- `disable_pipeline_test.ps1`: Standalone script for managing pipeline triggers
+
+## Safety Features
+- Checks if pipeline is running before operations
+- Automatically disables pipeline when removing VMs
+- Re-enables pipeline when adding VMs back
