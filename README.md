@@ -3,7 +3,7 @@
 Scripts for managing Azure Load Balancer and Release Pipeline configurations.
 
 ## Prerequisites
-- Azure CLI installed and logged in (`az login`)
+- Azure CLI installed and logged in (`az login` or using `az_logins.ps1`)
 - PowerShell 5.1 or higher
 - [Azure DevOps PAT](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows) with Release management permissions
     - This will need to be added to the config.json file
