@@ -1,7 +1,7 @@
 # Azure DevOps Configuration
 $organization = "betenboughsystems"
 $project = "main"
-$releaseDefinitionId = "66"
+$releaseDefinitionId = "60" # 60 is the main release pipeline - https://dev.azure.com/betenboughsystems/main/_release?_a=releases&view=mine&definitionId=60
 $configPath = Join-Path $PSScriptRoot "config.json"
 
 if (Test-Path $configPath) {
