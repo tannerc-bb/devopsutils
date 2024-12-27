@@ -5,7 +5,7 @@ Scripts for managing Azure Load Balancer and Release Pipeline configurations.
 ## Prerequisites
 - Azure CLI installed and logged in (`az login`)
 - PowerShell 5.1 or higher
-- Azure DevOps PAT with Release management permissions
+- [Azure DevOps PAT](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows) with Release management permissions
     - This will need to be added to the config.json file
 
 ## Setup
@@ -14,12 +14,24 @@ Scripts for managing Azure Load Balancer and Release Pipeline configurations.
 3. Ensure `config.json` is in `.gitignore`
 
 ## Usage
-- `loadbalancer_manager.ps1`: Interactive menu for managing VMs in load balancer
-- `disable_pipeline_test.ps1`: Interactive menu for managing pipeline triggers
-- `training_site_refresh.ps1`: Interactive menu for managing training site refresh schedule
+- Run the script you want to use with `.\script_name.ps1`
+- Follow the prompts to interact with the script
 
-## Safety Features
-- Checks if pipeline is running before operations
+## Scripts
+`loadbalancer_manager.ps1`: Interactive menu for managing VMs in the Production load balancer
+- Add/remove VMs from the load balancer
 - Automatically disables pipeline when removing VMs from the load balancer
 - Ensures at least one VM is always in the load balancer
 - Re-enables pipeline when adding VMs back to the load balancer
+
+`disable_pipeline_test.ps1`: Interactive menu for enabling/disabling a test pipeline
+- Enables/disables a test pipeline
+    - Will check if the pipeline is running before enabling/disabling
+    - Will enable/disable schedules associated with the pipeline
+    - Will enable/disable the branch policy associated with the pipeline
+
+`training_site_refresh.ps1`: Interactive menu for managing training site refresh schedule
+- Enables/disables the training site refresh schedule
+
+
+
