@@ -38,6 +38,8 @@ while ($true) {
     # Display menu and get user selection
     Write-Host "`nTraining Site Refresh Schedule Manager" -ForegroundColor Cyan
     Write-Host "--------------------------------" -ForegroundColor Cyan
+    Write-Host "WARNING: This script requires PowerShell 7!" -ForegroundColor Yellow
+    Write-Host "--------------------------------" -ForegroundColor Cyan
     Write-Host "1: Disable Training Site Refresh Schedule"
     Write-Host "2: Enable Training Site Refresh Schedule"
     Write-Host "Q: Quit"
